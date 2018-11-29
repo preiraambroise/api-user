@@ -1,0 +1,25 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+    task.search_filter:
+        parent:    'api_platform.doctrine.orm.search_filter'
+        arguments: [ { user.id: 'exact', id: 'exact', priority: 'exact', name: 'partial', time: 'exact' } ]
+        tags:      [ { name: 'api_platform.filter', id: 'task.search' } ]
+
+    task.numeric_filter:
+        parent:    'api_platform.doctrine.orm.range_filter'
+        arguments: [ { priority: ~ } ]
+        tags:      [ { name: 'api_platform.filter', id: 'task.range' } ]
+
+    task.order_filter:
+        parent:    'api_platform.doctrine.orm.order_filter'
+        arguments: [ { id: ~, priority: "DESC", time: ~ } ]
+        tags:      [ { name: 'api_platform.filter', id: 'task.order' } ]
+
+    task.date_filter:
+        parent:    'api_platform.doctrine.orm.date_filter'
+        arguments: [ { createdAt: ~ } ]
+        tags:      [ { name: 'api_platform.filter', id: 'task.date' } ]

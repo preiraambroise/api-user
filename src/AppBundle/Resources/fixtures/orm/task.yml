@@ -1,0 +1,6 @@
+AppBundle\Entity\Task:
+    task_{1..10}:
+        time: '<numberBetween(0, 60)>'
+        priority: '<numberBetween(0, 10)>'
+        name: '<sentence(3)>'
+        user: '@user*'

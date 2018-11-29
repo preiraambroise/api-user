@@ -1,0 +1,6 @@
+AppBundle\Entity\User:
+    user_{1..10}:
+        fullname: '<lastName()> <firstName()>'
+        username: '<username()>'
+        email: '<email()>'
+        plainPassword: 'test1234'
